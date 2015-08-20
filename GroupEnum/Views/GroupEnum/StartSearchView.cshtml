@@ -1,0 +1,29 @@
+﻿@using GroupEnum.Models
+@model GroupEnum.Models.GroupEnumSearch
+
+@{
+    ViewBag.Title = "StartSearchView";
+}
+
+<h2>Search Results</h2>
+@if (!(Model.listResultProps.Contains(new resultProps { adspath = "Object not found" })))
+{
+    @*@Model.recurse
+    @Model.saveAsDD
+    @Model.searchItem
+    @Model.txtresults
+    @Html.LabelFor(m => m.isGroup)
+    @Model.isGroup
+    @Html.LabelFor(m => m.isUser)
+    @Model.isUser*@
+    @Html.LabelFor(m => m.listResultProps, "")
+    <h3>Parent;Group Name;Member Name;SAM Account Name;Class;AdsPath</h3>
+    <ul style="list-style-type:none">
+        @foreach (resultProps g in Model.listResultProps)
+        {
+            <li>@g.parent;@g.groupname;@g.membername;@g.membersamaccount;@g.strClass;@g.adspath</li>
+        }
+    </ul>
+} else {
+    @Model.listResultProps
+}
