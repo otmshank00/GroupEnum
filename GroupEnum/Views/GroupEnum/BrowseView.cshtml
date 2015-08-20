@@ -18,7 +18,16 @@
 @foreach (ou item in Model.ouitem) {
     <tr>
         <td>
-            @item.displayname
+            item.dn
+        </td>
+        <td>
+            @item.dn
+        </td>
+        <td>
+            item.parentdn
+        </td>
+        <td>
+            @item.parentdn
         </td>
     </tr>
 }
