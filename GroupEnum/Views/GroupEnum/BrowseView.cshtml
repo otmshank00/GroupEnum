@@ -1,0 +1,27 @@
+﻿@using GroupEnum.Models
+@model GroupEnum.Models.oubrowser
+
+@{
+    ViewBag.Title = "BrowseView";
+}
+
+<h2>BrowseView</h2>
+
+<p>
+   
+</p>
+<table class="table">
+    <tr>
+        <th></th>
+    </tr>
+
+@foreach (ou item in Model.ouitem) {
+    <tr>
+        <td>
+            @item.displayname
+        </td>
+    </tr>
+}
+    
+</table>
+<input type="submit" name="select" value="Select" />

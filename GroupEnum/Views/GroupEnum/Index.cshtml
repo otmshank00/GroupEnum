@@ -9,17 +9,18 @@
     @Html.LabelFor(m => m.searchItem, "Select Group or Entire OU")
     @Html.Raw("&nbsp")
     @Html.TextBoxFor(m => m.searchItem)
-    <input type="button" name="browse" value="Browse" />
+    @*<input type="button" name="BrowseView" value="Browse" />*@
+    @Html.ActionLink("Browse...", "BrowseView")
     <br />
     @Html.LabelFor(m => m.recurse, "Recurse?")
     @Html.Raw("&nbsp")
     @Html.CheckBoxFor(m => m.recurse)
-    @Html.Raw("&nbsp")
+    @*@Html.Raw("&nbsp")
     @Html.Raw("&nbsp")
     @Html.Raw("&nbsp")
     @Html.LabelFor(m => m.saveAsDD, "Save Results As")
     @Html.Raw("&nbsp")
-    @Html.EnumDropDownListFor(m => m.saveAsDD)
+    @Html.EnumDropDownListFor(m => m.saveAsDD)*@
     <br />
     <input type="submit" name="start" value="Start" />
     

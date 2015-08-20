@@ -4,26 +4,38 @@
 @{
     ViewBag.Title = "StartSearchView";
 }
-
+<style>
+    ul 
+    {
+    
+    }
+    li
+    {
+        padding:10px;
+    }
+</style>
 <h2>Search Results</h2>
 @if (!(Model.listResultProps.Contains(new resultProps { adspath = "Object not found" })))
 {
-    @*@Model.recurse
-    @Model.saveAsDD
-    @Model.searchItem
-    @Model.txtresults
-    @Html.LabelFor(m => m.isGroup)
-    @Model.isGroup
-    @Html.LabelFor(m => m.isUser)
-    @Model.isUser*@
+
+    var dataFile = Server.MapPath("~/Results/results.txt");
+    string results = "";
+
     @Html.LabelFor(m => m.listResultProps, "")
-    <h3>Parent;Group Name;Member Name;SAM Account Name;Class;AdsPath</h3>
     <ul style="list-style-type:none">
+        <li><strong>Parent;Name;Member Name;SAM Account Name;Class;AdsPath</strong></li>
+        @{
+            results = "Parent;Name;Member Name;SAM Account Name;Class;AdsPath"+Environment.NewLine;
+        }
         @foreach (resultProps g in Model.listResultProps)
         {
-            <li>@g.parent;@g.groupname;@g.membername;@g.membersamaccount;@g.strClass;@g.adspath</li>
+            results = results + g.parent + ";" + g.groupname + ";" + g.membername + ";" + g.membersamaccount + ";" + g.strClass + ";" + g.adspath + Environment.NewLine;
+            <li>@g.parent;<strong><font color="red">@g.groupname</font></strong>;<strong><font color="green">@g.membername</font></strong>;@g.membersamaccount;@g.strClass;@g.adspath</li>
+
         }
     </ul>
+    File.WriteAllText(@dataFile, @results);
+    <a href="~/Results/results.txt">Download data</a>
 } else {
     @Model.listResultProps
 }
